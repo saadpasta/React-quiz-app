@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import './App.css';
 import Login from './screens/login/login'
+import Register from './screens/register/register'
+
 import logo from './logo.png'
 
 
@@ -12,6 +14,7 @@ class App extends Component {
     this.state = {
       user: false,
       login:false,
+      register:true
     }
 
     this.navabar = this.navabar.bind(this);
@@ -46,6 +49,7 @@ class App extends Component {
         <br></br>
 
         {!user && login  && <Login />}
+        {!user && register  && <Register />}
 
 
       </div>
