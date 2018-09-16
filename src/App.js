@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
+import Login from './screens/login/login'
 import logo from './logo.png'
 
 
@@ -7,6 +8,11 @@ class App extends Component {
 
   constructor(props) {
     super()
+
+    this.state = {
+      user: false,
+      login:false,
+    }
 
     this.navabar = this.navabar.bind(this);
 
@@ -28,6 +34,7 @@ class App extends Component {
 
 
   render() {
+    const { user,login,register } = this.state;
 
     return (
       <div className="App">
@@ -38,6 +45,7 @@ class App extends Component {
 
         <br></br>
 
+        {!user && login  && <Login />}
 
 
       </div>
