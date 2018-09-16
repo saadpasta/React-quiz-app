@@ -23,7 +23,7 @@ class Register extends Component {
                             </div>
                             <button type="submit" className="btn btn-primary">Register</button>
                             <hr></hr>
-                                <button className="btn btn-info">Login</button>
+                                <button className="btn btn-info" onClick={this.props.loginPage}>Login</button>
                         </div>
                     </div>
                 </div>

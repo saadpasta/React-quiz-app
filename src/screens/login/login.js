@@ -19,7 +19,7 @@ class Login extends Component {
                             </div>
                             <button type="submit" className="btn btn-primary">Submit</button>
                             <hr></hr>
-                                <button className="btn btn-info">Create An Account</button>
+                                <button className="btn btn-info" onClick={this.props.registerPage}>Create An Account</button>
                         </div>
                     </div>
                 </div>

@@ -13,14 +13,42 @@ class App extends Component {
 
     this.state = {
       user: false,
-      login:false,
-      register:true
+      login:true,
+      register:false
     }
 
     this.navabar = this.navabar.bind(this);
+    this.registerPage = this.registerPage.bind(this);
+    this.loginPage = this.loginPage.bind(this);
+
+
 
   }
 
+/* Register Page */
+
+registerPage(){
+  this.setState({
+
+    login:false,
+    register:true
+
+  })
+
+}
+
+
+loginPage(){
+  this.setState({
+
+    login:true,
+    register:false
+
+  })
+
+}
+
+  /* Navbar Function */
   navabar() {
     return (
       <nav class="navbar navbar-light bg-light">
@@ -48,8 +76,8 @@ class App extends Component {
 
         <br></br>
 
-        {!user && login  && <Login />}
-        {!user && register  && <Register />}
+        {!user && login  && <Login registerPage={this.registerPage} />}
+        {!user && register  && <Register  loginPage={this.loginPage}/>}
 
 
       </div>
