@@ -9,12 +9,15 @@ class QuizMain extends Component {
 
         this.state = {
 
-            
+
+
 
         }
 
         this.startQuiz = this.startQuiz.bind(this)
-        this.handleChange=this.handleChange.bind(this)
+        this.handleChange = this.handleChange.bind(this)
+        this.proctoringKey=this.proctoringKey.bind(this)
+        this.quizQuestions=this.quizQuestions.bind(this)
     }
 
 
@@ -30,6 +33,8 @@ class QuizMain extends Component {
         const { key } = this.state
         if (key == 123) {
             swal("Whooo!", "Quiz Started!", "success");
+            this.setState({ start: true });
+
         }
         else {
 
@@ -39,16 +44,9 @@ class QuizMain extends Component {
 
     }
 
-
-    render() {
-        const { startedquiz } = this.props
-
+    proctoringKey() {
         return (
             <div>
-
-                <h1>{startedquiz}</h1>
-                <hr></hr>
-
                 <div className="row">
                     <div className="col-md-6 mx-auto">
                         <div className="card">
@@ -69,8 +67,33 @@ class QuizMain extends Component {
                     </div>
                 </div>
 
+            </div>
+        )
+    }
+
+    quizQuestions(){
+
+        return(
+            <h1>Hello</h1>
+        )
+
+    }
 
 
+    render() {
+        const { startedquiz } = this.props
+        const { start } = this.state
+        return (
+            <div>
+
+                <h1>{startedquiz}</h1>
+                <hr></hr>
+
+                {!start && <this.proctoringKey/>}
+                {start && <this.quizQuestions/>}
+
+               
+ 
 
 
             </div>
