@@ -1,25 +1,26 @@
 import React, { Component } from 'react';
+import swal from 'sweetalert';
 
 class Register extends Component {
 
-    constructor(props){
+    constructor(props) {
 
         super()
-        this.state={
+        this.state = {
 
-            email:'',
-            password:'',
-            password2:''
+            email: '',
+            password: '',
+            password2: ''
 
         }
         this.handleChange = this.handleChange.bind(this);
-        this.register=this.register.bind(this)
+        this.register = this.register.bind(this)
 
     }
 
 
 
-    handleChange(evt){
+    handleChange(evt) {
 
 
         this.setState({ [evt.target.name]: evt.target.value });
@@ -28,19 +29,43 @@ class Register extends Component {
     }
 
 
-register(){
+    register() {
+
+        const { email, password, password2 } = this.state;
 
 
-    console.log(this.state.email)
-    console.log(this.state.password)
 
-}
+        if (password != password2) {
+
+            swal("Oops!", "Password Donot Match!", "error");
+
+        }
+
+        else {
+            var user = { 'email': email, 'password': password};
+
+            // Put the object into storage
+            localStorage.setItem('user', JSON.stringify(user));
+
+            swal("Congats!", "Your Account Has Been Created!", "success");
+
+            {this.props.loginPage()}
+
+          
+
+
+
+        }
+
+    }
 
 
 
 
 
     render() {
+
+
         return (
             <div className="login">
                 <div className="row">
