@@ -11,7 +11,7 @@ export default class Quizinfo extends Component {
   }
 
   render() {
-    const { quiz } = this.props
+    const { quiz , startquiz} = this.props
 
     return (
       <div>
@@ -30,7 +30,7 @@ export default class Quizinfo extends Component {
               <h3>Time: {quiz.time}Min</h3>
               </div>
               <div className="card-footer">
-              <button className="btn btn-md  btn-primary">Start Quiz</button>
+              <button className="btn btn-md  btn-primary" onClick={() => startquiz(quiz.name)}>Start Quiz</button>
               </div>
             </div>
             </div>

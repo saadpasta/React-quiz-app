@@ -4,6 +4,7 @@ import Login from './screens/login/login'
 import Register from './screens/register/register'
 import Dashborad from './screens/dashborad/dashboard'
 import Quizinfo from './screens/quizinfo/quizinfo'
+import QuizMain from './screens/quizMain/quizmain'
 import logo from './logo.png'
 
 
@@ -24,7 +25,8 @@ class App extends Component {
         {name: 'HTML', questions: 50, time:40}
       ],
 
-      quiz:''
+      quiz:'',
+      startedquiz:''
     }
 
     this.navabar = this.navabar.bind(this);
@@ -32,6 +34,7 @@ class App extends Component {
     this.loginPage = this.loginPage.bind(this);
     this.dashboradPage=this.dashboradPage.bind(this)
     this.enterQuiz=this.enterQuiz.bind(this)
+    this.startQuiz=this.startQuiz.bind(this)
 
 
 
@@ -79,6 +82,13 @@ enterQuiz(index) {
 
   }
 
+  startQuiz(name){
+
+    
+    this.setState({startedquiz:name})
+
+  }
+
 
 
   /* Navbar Function */
@@ -98,7 +108,7 @@ enterQuiz(index) {
 
 
   render() {
-    const { user,login,register,quizzes,quiz } = this.state;
+    const { user,login,register,quizzes,quiz, startedquiz } = this.state;
 
     return (
       <div className="App">
@@ -112,7 +122,8 @@ enterQuiz(index) {
         {!user && login  && <Login registerPage={this.registerPage} dashboardPage={this.dashboradPage} />}
         {!user && register  && <Register  loginPage={this.loginPage}/>}
         {user && !register && !login &&!quiz && <Dashborad  onPress={this.enterQuiz} list={quizzes} />}
-        {quiz && <Quizinfo quiz={quiz}/> }
+        {quiz && !startedquiz && <Quizinfo  startquiz ={this.startQuiz} quiz={quiz}/> }
+        {startedquiz && <QuizMain startedquiz={startedquiz}/>}
 
       </div>
     );
